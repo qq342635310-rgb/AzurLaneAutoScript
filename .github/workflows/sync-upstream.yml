@@ -33,4 +33,4 @@ jobs:
             git commit --no-edit
           fi
 
-          git push origin master9
+          git push origin master
