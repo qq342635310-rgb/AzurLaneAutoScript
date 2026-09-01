@@ -1,0 +1,36 @@
+name: Sync upstream
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 每天UTC 2点 = 北京时间上午10点
+  workflow_dispatch:       # 允许手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge upstream, keep dock.py patched
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/LmeSzinc/AzurLaneAutoScript.git
+          git fetch upstream master
+
+          if git merge upstream/master --no-edit; then
+            echo "官方无改动或无冲突，直接合并"
+          else
+            echo "dock.py 冲突：取官方新版并重打补丁"
+            git checkout upstream/master -- module/retire/dock.py
+            git apply --3way .github/patches/dock.patch
+            git add module/retire/dock.py
+            git commit --no-edit
+          fi
+
+          git push origin master9
