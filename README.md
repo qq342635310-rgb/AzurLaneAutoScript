@@ -1,3 +1,9 @@
+这是一个自用分支，目前对比原版只修改了默认的排序方式，由默认等级排序更改为默认稀有度排序，其他同步原版仓库更新
+
+
+
+
+
 **| [English](README_en.md) | 简体中文 | [日本語](README_jp.md) |**
 
 # AzurLaneAutoScript
