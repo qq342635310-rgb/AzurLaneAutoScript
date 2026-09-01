@@ -135,7 +135,7 @@ class Dock(Equipment):
                 origin=(218, 36), delta=delta, button_shape=button_shape, grid_shape=(7, 1), name='FILTER_SORT'),
             # stat has extra grid, not worth pursuing
             option_names=['rarity', 'level', 'total', 'join', 'intimacy', 'mood', 'stat'],
-            option_default='level'
+            option_default='rarity'
         )
         setting.add_setting(
             setting='index',
@@ -173,7 +173,7 @@ class Dock(Equipment):
 
     def dock_filter_set(
             self,
-            sort='level',
+            sort='rarity',
             index='all',
             faction='all',
             rarity='all',
