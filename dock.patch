@@ -1,0 +1,28 @@
+commit b794d5c8e06828dc9cc443503582da022f34bad4
+Author: qq342635310-rgb <qq342635310@gmail.com>
+Date:   Tue Sep 1 19:53:45 2026 +0800
+
+    Update dock.py
+
+diff --git a/module/retire/dock.py b/module/retire/dock.py
+index 1cba901..1b84b46 100644
+--- a/module/retire/dock.py
++++ b/module/retire/dock.py
+@@ -135,7 +135,7 @@ class Dock(Equipment):
+                 origin=(218, 36), delta=delta, button_shape=button_shape, grid_shape=(7, 1), name='FILTER_SORT'),
+             # stat has extra grid, not worth pursuing
+             option_names=['rarity', 'level', 'total', 'join', 'intimacy', 'mood', 'stat'],
+-            option_default='level'
++            option_default='rarity'
+         )
+         setting.add_setting(
+             setting='index',
+@@ -173,7 +173,7 @@ class Dock(Equipment):
+ 
+     def dock_filter_set(
+             self,
+-            sort='level',
++            sort='rarity',
+             index='all',
+             faction='all',
+             rarity='all',
